@@ -50,7 +50,7 @@ const B10SaveWork = () => {
             <Music size={24} className="text-muted-foreground" />
           </div>
           <div>
-            <p className="text-sm font-medium">四部合聲作業</p>
+            <p className="text-sm font-medium">四部和聲作業</p>
             <p className="text-xs text-muted-foreground">G 大調 · 8 小節 · 5 個錯誤</p>
           </div>
         </div>

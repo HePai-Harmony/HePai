@@ -1,5 +1,5 @@
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { Bookmark, BookOpen, CheckCircle, XCircle, ArrowRight, ChevronRight, Plus } from 'lucide-react';
+import { Bookmark, BookOpen, CheckCircle, XCircle, Plus, Headphones } from 'lucide-react';
 import PageHeader from '@/components/shared/PageHeader';
 import { harmonyErrors } from '@/data/mockData';
 import { useState } from 'react';
@@ -170,7 +170,7 @@ const B8ErrorDetail = () => {
             <BookOpen size={16} /> 練習相關題目
           </button>
           <button onClick={() => navigate('/grading/rewrite')} className="w-full py-3 bg-card border border-border text-foreground rounded-xl text-sm font-medium flex items-center justify-center gap-2 shadow-card">
-            <ArrowRight size={16} /> 查看改寫建議
+            <Headphones size={16} /> 查看並播放改寫建議
           </button>
           <div className="flex gap-2">
             <button onClick={() => setBookmarked(!bookmarked)}

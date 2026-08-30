@@ -1,91 +1,109 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 
+import { readManualCorrections, saveManualCorrections } from "@/lib/manual-correction";
 import B4RecognitionResult from "@/pages/B4_RecognitionResult";
 
 describe("B4RecognitionResult", () => {
-  it("brings the tapped issue to the primary detail slot", async () => {
+  beforeEach(() => {
+    window.localStorage.removeItem("hepai_manual_corrections_v3");
+  });
+
+  it("lists the SATB notes recognized at each measure and beat", () => {
     render(
       <MemoryRouter>
         <B4RecognitionResult />
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId("selected-issue-panel")).toHaveTextContent("平行五度");
-    expect(screen.getByTestId("selected-issue-panel")).toHaveTextContent("第二小節，第 1 拍至第 2 拍");
-    expect(screen.getByRole("button", { name: "平行五度，第二小節，第 1 拍至第 2 拍" })).toBeInTheDocument();
+    expect(screen.getByText("已辨識 12 個音符，請先確認")).toBeInTheDocument();
+    expect(screen.getByText("3 拍")).toBeInTheDocument();
+    expect(screen.getByText("1 音")).toBeInTheDocument();
 
-    fireEvent.click(
-      within(screen.getByTestId("issue-navigator")).getByRole("button", { name: /連續八度/i })
-    );
+    const firstBeat = screen.getByRole("button", { name: "第 2 小節第 1 拍辨識音符" });
+    expect(firstBeat).toHaveTextContent("S · Soprano");
+    expect(firstBeat).toHaveTextContent("D4");
+    expect(firstBeat).toHaveTextContent("A · Alto");
+    expect(firstBeat).toHaveTextContent("B3");
+    expect(firstBeat).toHaveTextContent("T · Tenor");
+    expect(firstBeat).toHaveTextContent("B3");
+    expect(firstBeat).toHaveTextContent("B · Bass");
+    expect(firstBeat).toHaveTextContent("G♯2");
 
-    const primaryPanel = screen.getByTestId("selected-issue-panel");
-    expect(primaryPanel).toHaveTextContent("連續八度");
-    expect(primaryPanel).toHaveTextContent("避免外聲部形成連續純八度");
+    const scoreVoiceLabels = [...document.querySelectorAll(
+      "svg[aria-labelledby='recognition-score-title'] g[role='button'] text"
+    )]
+      .slice(0, 4)
+      .map((label) => label.textContent);
+    expect(scoreVoiceLabels).toEqual(["S", "A", "T", "B"]);
   });
 
-  it("renders the selected issue summary as a desktop badge plus a mobile badge", () => {
+  it("moves the score locator when the user selects another recognized beat", () => {
     render(
       <MemoryRouter>
         <B4RecognitionResult />
       </MemoryRouter>
     );
 
-    const desktopBadge = screen.getByTestId("selected-issue-badge-desktop");
-    const mobileBadge = screen.getByTestId("selected-issue-badge-mobile");
-    const issueNavigator = screen.getByTestId("issue-navigator");
+    const beatList = screen.getByTestId("recognized-beat-list");
+    const secondBeat = within(beatList).getByRole("button", {
+      name: "第 2 小節第 2 拍辨識音符",
+    });
 
-    expect(screen.getByRole("region", { name: "錯誤導覽" })).toBeInTheDocument();
-    expect(desktopBadge).toHaveClass("hidden", "sm:block");
-    expect(mobileBadge).toHaveClass("sm:hidden", "rounded-[2rem]", "border", "bg-card");
-    expect(screen.queryByText("問題導覽")).not.toBeInTheDocument();
-    expect(screen.queryByText("點選任一錯誤，更新譜面高亮與下方詳細說明。")).not.toBeInTheDocument();
-    expect(desktopBadge).toHaveTextContent("平行五度");
-    expect(mobileBadge).toHaveTextContent("平行五度");
-    expect(screen.getByTestId("selected-issue-panel")).toHaveTextContent("第二小節，第 1 拍至第 2 拍");
-    expect(screen.getByRole("button", { name: "平行五度，第二小節，第 1 拍至第 2 拍" })).toBeInTheDocument();
+    fireEvent.click(secondBeat);
 
-    fireEvent.click(
-      within(issueNavigator).getByRole("button", { name: /平行五度.*第二小節，第 2 拍至第 3 拍/i })
-    );
-
-    expect(desktopBadge).toHaveTextContent("平行五度");
-    expect(mobileBadge).toHaveTextContent("平行五度");
-    expect(screen.getByTestId("selected-issue-panel")).toHaveTextContent("第二小節，第 2 拍至第 3 拍");
+    expect(secondBeat).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByText("第 2 小節・第 2 拍", { selector: "p.text-xs" })).toBeInTheDocument();
+    expect(secondBeat).toHaveTextContent("C♯4");
+    expect(secondBeat).toHaveTextContent("清楚");
   });
 
-  it("never nests the desktop summary badge inside the score aspect frame", () => {
-    // Regression guard: previously the desktop badge sat absolute inside
-    // the aspect-[2048/840] wrapper of the score SVG, which at ≥sm
-    // viewports stacked it over the bass clef and hid Soprano/Bass
-    // voice-leading errors from the reader (see problem.png in the
-    // original report). Keep the badge strictly OUTSIDE the SVG's aspect
-    // frame so both staves remain fully visible on every viewport.
-    const { container } = render(
+  it("keeps harmonic-rule feedback out of the recognition confirmation step", () => {
+    render(
       <MemoryRouter>
         <B4RecognitionResult />
       </MemoryRouter>
     );
 
-    const desktopBadge = screen.getByTestId("selected-issue-badge-desktop");
-    const scoreSvg = container.querySelector(
-      "svg[aria-labelledby='recognition-score-title']"
+    expect(screen.getByText(/這一步只確認辨識結果/)).toBeInTheDocument();
+    expect(screen.queryByText("平行五度")).not.toBeInTheDocument();
+    expect(screen.queryByText("連續八度")).not.toBeInTheDocument();
+  });
+
+  it("offers correction only for wrong recognition and analysis for confirmed notes", () => {
+    render(
+      <MemoryRouter>
+        <B4RecognitionResult />
+      </MemoryRouter>
     );
-    expect(scoreSvg).not.toBeNull();
-    const scoreFrame = scoreSvg!.parentElement;
-    expect(scoreFrame).not.toBeNull();
-    expect(scoreFrame).not.toContainElement(desktopBadge);
+
+    expect(
+      screen.getByRole("button", { name: "辨識有誤，手動修正" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "音符正確，開始分析" })
+    ).toBeInTheDocument();
+  });
+
+  it("shows previously corrected notes when returning from manual correction", () => {
+    const corrected = readManualCorrections().map((note) =>
+      note.id === "m2b3-t" ? { ...note, midi: 58 } : note
+    );
+    saveManualCorrections(corrected);
+
+    render(
+      <MemoryRouter>
+        <B4RecognitionResult />
+      </MemoryRouter>
+    );
+
+    const thirdBeat = screen.getByRole("button", { name: "第 2 小節第 3 拍辨識音符" });
+    expect(thirdBeat).toHaveTextContent("T · Tenor");
+    expect(thirdBeat).toHaveTextContent("A♯3");
   });
 
   it("preserves the native aspect ratio of the score capture image", () => {
-    // Robustness guard: if someone swaps /public/score-original.png for a
-    // differently-proportioned photograph, `preserveAspectRatio="none"`
-    // would silently stretch the notation vertically or horizontally. The
-    // current image (2560×1051) happens to match the 2048×840 viewBox
-    // closely enough to hide the bug, but future edits shouldn't depend
-    // on that coincidence. Use `xMidYMid meet` so any future aspect
-    // mismatch letterboxes rather than distorts the music.
     const { container } = render(
       <MemoryRouter>
         <B4RecognitionResult />

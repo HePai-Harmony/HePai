@@ -16,7 +16,7 @@ const B1GradingHome = () => {
           <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-3">
             <Music size={28} className="text-primary" />
           </div>
-          <h1 className="text-lg font-display font-bold">拍攝或上傳四部合聲樂譜</h1>
+          <h1 className="text-lg font-display font-bold">拍攝或上傳四部和聲樂譜</h1>
           <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">支援手寫樂譜拍照與上傳，進行和聲分析與錯誤回饋</p>
         </div>
 
@@ -27,7 +27,7 @@ const B1GradingHome = () => {
         >
           <Camera size={28} />
           <span className="text-base font-semibold">拍攝手寫譜</span>
-          <span className="text-xs opacity-80">拍攝你的四部合聲手寫作業</span>
+          <span className="text-xs opacity-80">拍攝你的四部和聲手寫作業</span>
         </button>
 
         <button
@@ -83,7 +83,7 @@ const B1GradingHome = () => {
               <Music size={24} className="text-muted-foreground" />
             </div>
             <p className="text-sm text-muted-foreground">還沒有批改作品</p>
-            <p className="text-xs text-muted-foreground mt-1">拍攝或上傳你的第一份四部合聲作業吧</p>
+            <p className="text-xs text-muted-foreground mt-1">拍攝或上傳你的第一份四部和聲作業吧</p>
           </div>
         )}
       </div>

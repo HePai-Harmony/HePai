@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { Target, Flame, Brain, FileText, ChevronRight, BookOpen, History, Star, Calendar, Zap } from 'lucide-react';
 import PageHeader from '@/components/shared/PageHeader';
-import { chapters, weeklyStats, examYears } from '@/data/mockData';
+import { chapters, weeklyStats } from '@/data/mockData';
+import { examYearCards, questionBankSummary } from '@/data/examQuestionBank';
 
 const C1QuestionHome = () => {
   const navigate = useNavigate();
@@ -51,17 +52,20 @@ const C1QuestionHome = () => {
         {/* Section 3: 歷屆題庫 */}
         <div>
           <div className="flex items-center justify-between mb-2">
-            <h2 className="text-sm font-semibold">歷屆題庫</h2>
+            <div>
+              <h2 className="text-sm font-semibold">歷屆題庫</h2>
+              <p className="text-[10px] text-muted-foreground mt-0.5">已匯入 {questionBankSummary.questionCount} 題正式資料</p>
+            </div>
             <button onClick={() => navigate('/questions/list')} className="text-xs text-primary">查看全部</button>
           </div>
           <div className="space-y-2">
-            {examYears.map(y => (
-              <button key={y.year} onClick={() => navigate('/questions/list')} className="w-full flex items-center gap-3 p-3.5 rounded-xl bg-card border border-border shadow-card text-left active:scale-[0.98] transition-transform">
+            {examYearCards.map(y => (
+              <button key={y.id} onClick={() => navigate(`/questions/list?paper=${y.id}`)} className="w-full flex items-center gap-3 p-3.5 rounded-xl bg-card border border-border shadow-card text-left active:scale-[0.98] transition-transform">
                 <div className="w-10 h-10 rounded-lg bg-primary/8 flex items-center justify-center">
                   <Calendar size={18} className="text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium">{y.year} 學年度</p>
+                  <p className="text-sm font-medium">{y.label}</p>
                   <p className="text-xs text-muted-foreground">{y.questionCount} 題 · 完成 {y.progress}%</p>
                 </div>
                 <div className="flex items-center gap-2">

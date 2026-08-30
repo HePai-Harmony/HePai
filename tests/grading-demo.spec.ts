@@ -25,7 +25,7 @@ test("secondary upload actions remain available and recent work appears only aft
   await expect(page).toHaveURL(/\/grading\/process$/);
 
   await page.waitForURL(/\/grading\/recognition$/);
-  await expect(page.getByText("已完成譜面辨識與錯誤定位")).toBeVisible();
+  await expect(page.getByText("已辨識 12 個音符，請先確認")).toBeVisible();
 
   await page.goto("/grading");
   await expect(page.getByText("拍攝示範｜四部和聲批改")).toBeVisible();

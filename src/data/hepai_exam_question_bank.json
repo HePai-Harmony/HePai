@@ -1,0 +1,1990 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-30",
+  "language": "zh-TW",
+  "answerIndexBase": 0,
+  "source": {
+    "repository": "https://github.com/HePai-Harmony/HePaiMobileApp",
+    "commit": "429f99f",
+    "assetDirectory": "app/app/src/main/assets",
+    "imageBaseUrl": "https://raw.githubusercontent.com/HePai-Harmony/HePaiMobileApp/429f99f/app/app/src/main/assets/"
+  },
+  "summary": {
+    "paperCount": 4,
+    "questionCount": 90,
+    "referencedImageCount": 18,
+    "academicYears": [
+      "112",
+      "113",
+      "114"
+    ]
+  },
+  "knownDataIssues": [
+    {
+      "sourceId": "114-06",
+      "normalizedId": "114-1-06",
+      "note": "原始題號格式缺少 -1；保留 sourceId，另提供 normalizedId。"
+    },
+    {
+      "field": "steps",
+      "blankCount": 87,
+      "note": "原始資料多數未提供逐步解析。"
+    },
+    {
+      "field": "wrongAnswers",
+      "blankCount": 88,
+      "note": "原始資料多數未提供錯誤選項解析。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "114-1",
+      "displayName": "114學年度",
+      "sourceFile": "114-1.json",
+      "questionType": "MCQ",
+      "questionCount": 25,
+      "groups": [
+        {
+          "name": "作品一",
+          "questionCount": 5,
+          "description": ""
+        },
+        {
+          "name": "作品二",
+          "questionCount": 5,
+          "description": ""
+        },
+        {
+          "name": "作品三",
+          "questionCount": 2,
+          "description": ""
+        },
+        {
+          "name": "作品四",
+          "questionCount": 5,
+          "description": ""
+        },
+        {
+          "name": "作品五",
+          "questionCount": 3,
+          "description": ""
+        },
+        {
+          "name": "綜合常識題",
+          "questionCount": 5,
+          "description": ""
+        }
+      ],
+      "questions": [
+        {
+          "id": "114-1-01",
+          "group": "114-1-1",
+          "question": "此譜例出自普賽爾（H. Purcell）的作品《迪朵與阿尼亞斯》（Dido and Aeneas），請問此樂曲屬於何種曲種？",
+          "image": "114-1-1.png",
+          "selections": [
+            "藝術歌曲",
+            "樂劇",
+            "歌劇",
+            "聖詠"
+          ],
+          "answer": 2,
+          "keypoint": "作品《Dido and Aeneas》為巴洛克時期英國歌劇。",
+          "steps": "(1) 辨識作品名稱與作曲家 (2) 對應其體裁（舞台戲劇性聲樂作品）(3) 以曲種分類判定為歌劇。",
+          "wrongAnswers": "A 藝術歌曲多為獨唱＋鋼琴/室內樂伴奏、非舞台劇；B 樂劇偏音樂劇/輕歌劇系統，與此作品史學定位不符；D 聖詠屬宗教禮儀吟誦，非劇場作品。",
+          "sourceId": "114-1-01",
+          "normalizedId": "114-1-01",
+          "answerText": "歌劇",
+          "imagePath": "images/114-1-1.png"
+        },
+        {
+          "id": "114-1-02",
+          "group": "114-1-1",
+          "question": "此譜例應屬下列哪一時期的作品？",
+          "image": "114-1-1.png",
+          "selections": [
+            "文藝復興時期",
+            "巴洛克時期",
+            "古典時期",
+            "浪漫時期"
+          ],
+          "answer": 1,
+          "keypoint": "普賽爾為巴洛克作曲家；加上數字低音/通奏低音語彙。",
+          "steps": "(1) 由作曲家年代定位 (2) 觀察譜例通奏低音/數字低音語法 (3) 對應巴洛克風格。",
+          "wrongAnswers": "A 文藝復興較少成熟通奏低音體系；C 古典期常見分句對稱與和聲寫法不同；D 浪漫期語法與配器/和聲張力亦不同。",
+          "sourceId": "114-1-02",
+          "normalizedId": "114-1-02",
+          "answerText": "巴洛克時期",
+          "imagePath": "images/114-1-1.png"
+        },
+        {
+          "id": "114-1-03",
+          "group": "114-1-1",
+          "question": "此譜例下方聲部中出現的阿拉伯數字代表",
+          "image": "114-1-1.png",
+          "selections": [
+            "小節數",
+            "演奏指法",
+            "頑固低音（Basso ostinato）",
+            "數字低音（Basso continuo）。"
+          ],
+          "answer": 3,
+          "keypoint": "低音線下方標示 6、5、4、3、7 等為和聲間距提示＝數字低音。",
+          "steps": "(1) 確認數字出現位置在低音下 (2) 判定其功能為提示上方和聲音程配置 (3) 對應「數字低音/通奏低音」慣例。",
+          "wrongAnswers": "",
+          "sourceId": "114-1-03",
+          "normalizedId": "114-1-03",
+          "answerText": "數字低音（Basso continuo）。",
+          "imagePath": "images/114-1-1.png"
+        },
+        {
+          "id": "114-1-04",
+          "group": "114-1-1",
+          "question": "此譜例第 5 小節結束於",
+          "image": "114-1-1.png",
+          "selections": [
+            "假終止",
+            "半終止",
+            "變格終止",
+            "正格終止。"
+          ],
+          "answer": 1,
+          "keypoint": "句末停在屬功能（V）而非主和弦（I），形成「未完全收束」的停頓感。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-04",
+          "normalizedId": "114-1-04",
+          "answerText": "半終止",
+          "imagePath": "images/114-1-1.png"
+        },
+        {
+          "id": "114-1-05",
+          "group": "114-1-1",
+          "question": "此譜例開頭處「DIDO」其意為",
+          "image": "114-1-1.png",
+          "selections": [
+            "角色名稱",
+            "舞曲名稱",
+            "樂器種類",
+            "速度術語。"
+          ],
+          "answer": 0,
+          "keypoint": "《Dido and Aeneas》為歌劇，Dido 為角色（迦太基女王）。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-05",
+          "normalizedId": "114-1-05",
+          "answerText": "角色名稱",
+          "imagePath": "images/114-1-1.png"
+        },
+        {
+          "id": "114-06",
+          "group": "114-1-2",
+          "question": "此譜例的高音旋律，與下列哪一歌曲旋律最接近？",
+          "image": "114-1-2.png",
+          "selections": [
+            "小蜜蜂",
+            "生日快樂",
+            "小星星",
+            "兩隻老虎"
+          ],
+          "answer": 2,
+          "keypoint": "旋律骨架與「小星星」常見的重複音型與級進輪廓最接近。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-06",
+          "normalizedId": "114-1-06",
+          "answerText": "小星星",
+          "imagePath": "images/114-1-2.png"
+        },
+        {
+          "id": "114-1-07",
+          "group": "114-1-2",
+          "question": "此譜例中標示的 VAR. VIII，其意為",
+          "image": "114-1-2.png",
+          "selections": [
+            "第八樂章",
+            "第八段變奏",
+            "第八首小品",
+            "第八號奏鳴曲。"
+          ],
+          "answer": 1,
+          "keypoint": "VAR. 為 Variation（變奏）縮寫；VIII 為羅馬數字 8。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-07",
+          "normalizedId": "114-1-07",
+          "answerText": "第八段變奏",
+          "imagePath": "images/114-1-2.png"
+        },
+        {
+          "id": "114-1-08",
+          "group": "114-1-2",
+          "question": "此譜例的上方二聲部中，出現最多的和聲外音是",
+          "image": "114-1-2.png",
+          "selections": [
+            "鄰音（Neighboring note）",
+            "經過音（Passing note）",
+            "先現音（Anticipation）",
+            "掛留音（Suspension）。"
+          ],
+          "answer": 3,
+          "keypoint": "大量出現「延留—解決」型態（先形成不協和，再下行/上行解決）。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-08",
+          "normalizedId": "114-1-08",
+          "answerText": "掛留音（Suspension）。",
+          "imagePath": "images/114-1-2.png"
+        },
+        {
+          "id": "114-1-09",
+          "group": "114-1-2",
+          "question": "此譜例兩個方框中所呈現的關係是",
+          "image": "114-1-2.png",
+          "selections": [
+            "倒影",
+            "逆行",
+            "模仿",
+            "重複。"
+          ],
+          "answer": 2,
+          "keypoint": "方框內動機先後在不同聲部以相似輪廓進入，為模仿。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-09",
+          "normalizedId": "114-1-09",
+          "answerText": "模仿",
+          "imagePath": "images/114-1-2.png"
+        },
+        {
+          "id": "114-1-10",
+          "group": "114-1-2",
+          "question": "下列何者不是此譜例所屬調性的近系調？",
+          "image": "114-1-2.png",
+          "selections": [
+            "a 小調",
+            "降 B 大調",
+            "g 小調",
+            "降 A 大調"
+          ],
+          "answer": 0,
+          "keypoint": "近系調通常為同主音關係（平行大小調）、屬/下屬與關係大小調等；a 小調與此譜例調性關聯最弱",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-10",
+          "normalizedId": "114-1-10",
+          "answerText": "a 小調",
+          "imagePath": "images/114-1-2.png"
+        },
+        {
+          "id": "114-1-11",
+          "group": "114-1-3",
+          "question": "此譜例的風格最接近下列何種舞曲？",
+          "image": "114-1-3.png",
+          "selections": [
+            "小步舞曲（Menuet）",
+            "薩拉邦德舞曲（Sarabande）",
+            "嘉禾舞曲（Gavotte）",
+            "布雷舞曲（Bourrée）"
+          ],
+          "answer": 0,
+          "keypoint": "速度/節拍感與典型小步舞曲的中庸步態、分句與重拍配置相符。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-11",
+          "normalizedId": "114-1-11",
+          "answerText": "小步舞曲（Menuet）",
+          "imagePath": "images/114-1-3.png"
+        },
+        {
+          "id": "114-1-12",
+          "group": "114-1-3",
+          "question": "此譜例出自拉威爾（M. Ravel）的《庫普蘭之墓》（Le Tombeau de Couperin），表示拉威爾對 18 世紀法國音樂的敬意。依據上述說明，此曲體現何種音樂創作思維？",
+          "image": "114-1-3.png",
+          "selections": [
+            "表現主義（Expressionism）",
+            "新古典主義（Neo-classicism）",
+            "序列主義（Serialism）",
+            "神祕主義（Mysticism）"
+          ],
+          "answer": 1,
+          "keypoint": "「向18世紀致敬」＝以古典/巴洛克形式語彙重新詮釋的「新古典主義」。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-12",
+          "normalizedId": "114-1-12",
+          "answerText": "新古典主義（Neo-classicism）",
+          "imagePath": "images/114-1-3.png"
+        },
+        {
+          "id": "114-1-13",
+          "group": "114-1-4",
+          "question": "此譜例的拍號為",
+          "image": "114-1-4.png",
+          "selections": [
+            "6/4",
+            "4/4",
+            "6/8",
+            "12/8。"
+          ],
+          "answer": 3,
+          "keypoint": "每小節呈現四組三連（或等價的複拍三分）脈動＝12/8。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-13",
+          "normalizedId": "114-1-13",
+          "answerText": "12/8。",
+          "imagePath": "images/114-1-4.png"
+        },
+        {
+          "id": "114-1-14",
+          "group": "114-1-4",
+          "question": "此譜例第 2 小節圓框處的音符時值等同於",
+          "image": "114-1-4.png",
+          "selections": [
+            "四分音符",
+            "十六分音符",
+            "附點八分音符",
+            "附點十六分音符。"
+          ],
+          "answer": 2,
+          "keypoint": "圓框音符的符尾/點與所在拍內分割，對應「附點八分」的時值。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-14",
+          "normalizedId": "114-1-14",
+          "answerText": "附點八分音符",
+          "imagePath": "images/114-1-4.png"
+        },
+        {
+          "id": "114-1-15",
+          "group": "114-1-4",
+          "question": "此譜例第 2 小節術語 appassionato 其意為何？",
+          "image": "114-1-4.png",
+          "selections": [
+            "熱情的",
+            "可愛的",
+            "如歌的",
+            "莊嚴的"
+          ],
+          "answer": 0,
+          "keypoint": "義大利文 appassionato＝充滿激情、熱情地。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-15",
+          "normalizedId": "114-1-15",
+          "answerText": "熱情的",
+          "imagePath": "images/114-1-4.png"
+        },
+        {
+          "id": "114-1-16",
+          "group": "114-1-4",
+          "question": "此譜例上方聲部最不可能為下列哪一種樂器的演奏用譜？",
+          "image": "114-1-4.png",
+          "selections": [
+            "大提琴",
+            "法國號",
+            "長號",
+            "低音管"
+          ],
+          "answer": 1,
+          "keypoint": "上聲部的譜號/音域與書寫方式較不符合法國號常見（移調、音域與記譜習慣）。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-16",
+          "normalizedId": "114-1-16",
+          "answerText": "法國號",
+          "imagePath": "images/114-1-4.png"
+        },
+        {
+          "id": "114-1-17",
+          "group": "114-1-4",
+          "question": "此譜例方框處並未出現哪一種和弦？",
+          "image": "114-1-4.png",
+          "selections": [
+            "減七和弦",
+            "大三和弦",
+            "減三和弦",
+            "屬七和弦"
+          ],
+          "answer": 3,
+          "keypoint": "方框內可辨識減七、減三與大三類堆疊，但未形成標準屬七（V7）結構。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-17",
+          "normalizedId": "114-1-17",
+          "answerText": "屬七和弦",
+          "imagePath": "images/114-1-4.png"
+        },
+        {
+          "id": "114-1-18",
+          "group": "114-1-5",
+          "question": "此譜例為 木管四重奏 銅管四重奏 混聲四部合唱 弦樂四重奏 的樂譜。",
+          "image": "114-1-5.png",
+          "selections": [
+            "木管四重奏",
+            "銅管四重奏",
+            "混聲四部合唱",
+            "弦樂四重奏"
+          ],
+          "answer": 3,
+          "keypoint": "譜上有 arco、pizz. 等弦樂專用奏法標記，且為四聲部合奏譜系。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-18",
+          "normalizedId": "114-1-18",
+          "answerText": "弦樂四重奏",
+          "imagePath": "images/114-1-5.png"
+        },
+        {
+          "id": "114-1-19",
+          "group": "114-1-5",
+          "question": "此譜例的圓框中不包含下列哪一種音程？",
+          "image": "114-1-5.png",
+          "selections": [
+            "大六度",
+            "小六度",
+            "大二度",
+            "減八度"
+          ],
+          "answer": 2,
+          "keypoint": "圓框內可找到六度（大/小）與等音異名造成的減八度關係，但未形成大二度。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-19",
+          "normalizedId": "114-1-19",
+          "answerText": "大二度",
+          "imagePath": "images/114-1-5.png"
+        },
+        {
+          "id": "114-1-20",
+          "group": "114-1-5",
+          "question": "此譜例的風格最接近",
+          "image": "114-1-5.png",
+          "selections": [
+            "點描主義（Pointillism）",
+            "象徵主義（Symbolism）",
+            "低限音樂（Minimal music）",
+            "具象音樂（Musique concrète）。"
+          ],
+          "answer": 0,
+          "keypoint": "音符稀疏、以分散音點構成音色/音高點狀組織，符合點描式寫作。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-20",
+          "normalizedId": "114-1-20",
+          "answerText": "點描主義（Pointillism）",
+          "imagePath": "images/114-1-5.png"
+        },
+        {
+          "id": "114-1-21",
+          "group": "114-1-6",
+          "question": "由一位歌者與鼓手共同演出，運用聲音變化與肢體動作表現情節，並於 2003 年列為人類非物質文化遺產的傳統藝術為",
+          "image": "",
+          "selections": [
+            "鑼鼓經",
+            "甘美朗（Gamelan）",
+            "南管",
+            "盤索里（Pansori）。"
+          ],
+          "answer": 3,
+          "keypoint": "盤索里典型即「一歌者＋一鼓手」敘事演唱，並於2003年列入UNESCO相關名錄。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-21",
+          "normalizedId": "114-1-21",
+          "answerText": "盤索里（Pansori）。",
+          "imagePath": null
+        },
+        {
+          "id": "114-1-22",
+          "group": "114-1-6",
+          "question": "若依照正確速度演奏此片段，共需 36 48 52 58 秒。",
+          "image": "114-1-6.png",
+          "selections": [
+            "36",
+            "48",
+            "52",
+            "58 秒。"
+          ],
+          "answer": 1,
+          "keypoint": "譜例標示速度（♩＝70）且包含 D.S.／Fine 等反覆指示，需依演奏路徑計算總拍數。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-22",
+          "normalizedId": "114-1-22",
+          "answerText": "48",
+          "imagePath": "images/114-1-6.png"
+        },
+        {
+          "id": "114-1-23",
+          "group": "114-1-6",
+          "question": "下列哪一種樂器最不可能出現在「客家八音」之中？",
+          "image": "",
+          "selections": [
+            "鼓",
+            "嗩吶",
+            "銅片琴",
+            "鑼"
+          ],
+          "answer": 2,
+          "keypoint": "「八音」常見嗩吶、鑼鼓等民間禮俗編制；銅片琴（類金屬鍵盤敲擊）非其典型配置。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-23",
+          "normalizedId": "114-1-23",
+          "answerText": "銅片琴",
+          "imagePath": null
+        },
+        {
+          "id": "114-1-24",
+          "group": "114-1-6",
+          "question": "下列何者對布農族《祈禱小米豐收歌》（pasibutbut）的敘述正確？",
+          "image": "",
+          "selections": [
+            "男聲歌唱",
+            "女聲歌唱",
+            "弓琴合奏",
+            "口簧琴合奏"
+          ],
+          "answer": 0,
+          "keypoint": "pasibutbut 以布農族男聲合唱（多聲部）著稱。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-24",
+          "normalizedId": "114-1-24",
+          "answerText": "男聲歌唱",
+          "imagePath": null
+        },
+        {
+          "id": "114-1-25",
+          "group": "114-1-6",
+          "question": "對「工尺譜」的敘述，下列何者正確？",
+          "image": "",
+          "selections": [
+            "絕對音名唱譜",
+            "相對音高樂譜",
+            "簡譜的別名",
+            "古琴唯一使用的記譜方式"
+          ],
+          "answer": 0,
+          "keypoint": "工尺譜以「工、尺、上、凡、六、五…」等唱名記音；在不同流派/教學脈絡中，可能被視為「依定調而定的相對音高」或「在特定定音系統下的對應音名」。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "114-1-25",
+          "normalizedId": "114-1-25",
+          "answerText": "絕對音名唱譜",
+          "imagePath": null
+        }
+      ]
+    },
+    {
+      "id": "113-1",
+      "displayName": "113學年度",
+      "sourceFile": "113-1.json",
+      "questionType": "MCQ",
+      "questionCount": 25,
+      "groups": [
+        {
+          "name": "作品一",
+          "questionCount": 4,
+          "description": ""
+        },
+        {
+          "name": "作品二",
+          "questionCount": 4,
+          "description": ""
+        },
+        {
+          "name": "作品三",
+          "questionCount": 4,
+          "description": ""
+        },
+        {
+          "name": "作品四",
+          "questionCount": 3,
+          "description": ""
+        },
+        {
+          "name": "綜合常識題",
+          "questionCount": 10,
+          "description": ""
+        }
+      ],
+      "questions": [
+        {
+          "id": "113-1-01",
+          "group": "113-1-1",
+          "question": "以上片段選自歌劇《費加洛婚禮》第四幕，原本為管弦樂團編制，上列譜例為鋼琴縮譜(piano reduction），並標示樂團演奏聲部之版本，請問此歌劇之作曲家為",
+          "image": "113-1-1.png",
+          "selections": [
+            "威爾第（G. Verdi）",
+            "羅西尼（G. Rossini）",
+            "比才（G. Bizet）",
+            "莫札特（W. A. Mozart）"
+          ],
+          "answer": 3,
+          "keypoint": "《費加洛婚禮》（Le nozze di Figaro）為莫札特歌劇。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-01",
+          "normalizedId": "113-1-01",
+          "answerText": "莫札特（W. A. Mozart）",
+          "imagePath": "images/113-1-1.png"
+        },
+        {
+          "id": "113-1-02",
+          "group": "113-1-1",
+          "question": "以上片段選自歌劇《費加洛婚禮》第四幕，原本為管弦樂團編制，上列譜例為鋼琴縮譜(piano reduction），並標示樂團演奏聲部之版本，請問下列何者最接近速度指示 Larghetto 的意思？",
+          "image": "113-1-1.png",
+          "selections": [
+            "比 Largo 快",
+            "比 Largo 慢",
+            "比 Adagio 快",
+            "比 Andante 快"
+          ],
+          "answer": 0,
+          "keypoint": "Larghetto 為 Largo 的「稍微」變體，通常比 Largo 稍快。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-02",
+          "normalizedId": "113-1-02",
+          "answerText": "比 Largo 快",
+          "imagePath": "images/113-1-1.png"
+        },
+        {
+          "id": "113-1-03",
+          "group": "113-1-1",
+          "question": "以上片段選自歌劇《費加洛婚禮》第四幕，原本為管弦樂團編制，上列譜例為鋼琴縮譜(piano reduction），並標示樂團演奏聲部之版本，根據樂譜上之標示，雙簧管獨奏出現在譜例的",
+          "image": "113-1-1.png",
+          "selections": [
+            "第 1 小節",
+            "第 2 小節",
+            "第 3 小節",
+            "第 4 小節"
+          ],
+          "answer": 2,
+          "keypoint": "譜例上方聲部標註「Ob.／Oboe」之進入位置對應第 3 小節。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-03",
+          "normalizedId": "113-1-03",
+          "answerText": "第 3 小節",
+          "imagePath": "images/113-1-1.png"
+        },
+        {
+          "id": "113-1-04",
+          "group": "113-1-1",
+          "question": "以上片段選自歌劇《費加洛婚禮》第四幕，原本為管弦樂團編制，上列譜例為鋼琴縮譜(piano reduction），並標示樂團演奏聲部之版本，請問雙小節線後之片段的調性為",
+          "image": "113-1-1.png",
+          "selections": [
+            "G 大調",
+            "e 小調",
+            "降 E 大調",
+            "降 B 大調"
+          ],
+          "answer": 2,
+          "keypoint": "雙小節線後的調號／臨時記號與主音落點指向降 E 大調。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-04",
+          "normalizedId": "113-1-04",
+          "answerText": "降 E 大調",
+          "imagePath": "images/113-1-1.png"
+        },
+        {
+          "id": "113-1-05",
+          "group": "113-1-2",
+          "question": "譜例中 “Pedale” 意義為",
+          "image": "113-1-2.png",
+          "selections": [
+            "弱音踏瓣",
+            "延音踏瓣",
+            "抖音踏瓣",
+            "腳鍵盤"
+          ],
+          "answer": 3,
+          "keypoint": "Pedale（Pedal）在管風琴語境常指「腳鍵盤（踏鍵盤）」聲部。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-05",
+          "normalizedId": "113-1-05",
+          "answerText": "腳鍵盤",
+          "imagePath": "images/113-1-2.png"
+        },
+        {
+          "id": "113-1-06",
+          "group": "113-1-2",
+          "question": "此片段應為哪種樂器的演奏用譜？",
+          "image": "113-1-2.png",
+          "selections": [
+            "豎琴（Harp）",
+            "管風琴（Organ）",
+            "大鍵琴（Harpsichord）",
+            "馬林巴琴（Marimba）"
+          ],
+          "answer": 1,
+          "keypoint": "有 “Pedale”＝踏鍵盤聲部，典型為管風琴譜。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-06",
+          "normalizedId": "113-1-06",
+          "answerText": "管風琴（Organ）",
+          "imagePath": "images/113-1-2.png"
+        },
+        {
+          "id": "113-1-07",
+          "group": "113-1-2",
+          "question": "關於此樂譜的敘述，下列何者錯誤？",
+          "image": "113-1-2.png",
+          "selections": [
+            "譜例中的裝飾音為迴音（turn）",
+            "本作品中有出現模進（sequence）的作曲手法",
+            "第 3 小節的和聲進行為五度循環（circle of fifths）",
+            "此片段中有出現經過音（passing note）"
+          ],
+          "answer": 0,
+          "keypoint": "譜例所示裝飾音型態不符合「迴音（turn）」的典型四音繞行形態。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-07",
+          "normalizedId": "113-1-07",
+          "answerText": "譜例中的裝飾音為迴音（turn）",
+          "imagePath": "images/113-1-2.png"
+        },
+        {
+          "id": "113-1-08",
+          "group": "113-1-2",
+          "question": "樂譜中的圓框內一共出現",
+          "image": "113-1-2.png",
+          "selections": [
+            "2",
+            "3",
+            "4",
+            "5 個小三度"
+          ],
+          "answer": 1,
+          "keypoint": "圓框處可逐一數出「小三度」音程共 3 組。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-08",
+          "normalizedId": "113-1-08",
+          "answerText": "3",
+          "imagePath": "images/113-1-2.png"
+        },
+        {
+          "id": "113-1-09",
+          "group": "113-1-3",
+          "question": "此曲第 8 小節進入",
+          "image": "113-1-3.png",
+          "selections": [
+            "屬調",
+            "關係調",
+            "下屬調",
+            "平行調（同名調）"
+          ],
+          "answer": 0,
+          "keypoint": "第 8 小節呈現屬調特徵（屬音/屬和聲穩定化並建立新主音中心）。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-09",
+          "normalizedId": "113-1-09",
+          "answerText": "屬調",
+          "imagePath": "images/113-1-3.png"
+        },
+        {
+          "id": "113-1-10",
+          "group": "113-1-3",
+          "question": "第 4 小節出現",
+          "image": "113-1-3.png",
+          "selections": [
+            "正格終止",
+            "半終止",
+            "教會終止",
+            "假終止"
+          ],
+          "answer": 1,
+          "keypoint": "第 4 小節句末停在屬功能（V）造成未完全收束＝半終止。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-10",
+          "normalizedId": "113-1-10",
+          "answerText": "半終止",
+          "imagePath": "images/113-1-3.png"
+        },
+        {
+          "id": "113-1-11",
+          "group": "113-1-3",
+          "question": "關於此曲敘述何者正確？",
+          "image": "113-1-3.png",
+          "selections": [
+            "是一首急板樂曲",
+            "方框 B 為減七和弦",
+            "最適合的表情術語是 Agitato",
+            "第一行常在第 2 拍換和弦"
+          ],
+          "answer": 3,
+          "keypoint": "第一行伴奏/和聲配置常呈現「每小節第 2 拍」的和聲更新點。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-11",
+          "normalizedId": "113-1-11",
+          "answerText": "第一行常在第 2 拍換和弦",
+          "imagePath": "images/113-1-3.png"
+        },
+        {
+          "id": "113-1-12",
+          "group": "113-1-3",
+          "question": "此譜例在圓框 A 所標示的音為",
+          "image": "113-1-3.png",
+          "selections": [
+            "先現音（anticipation）",
+            "掛留音（suspension）",
+            "鄰音（neighboring note）",
+            "經過音"
+          ],
+          "answer": 2,
+          "keypoint": "圓框音為「離開主音後立即回到主音」的鄰接型態。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-12",
+          "normalizedId": "113-1-12",
+          "answerText": "鄰音（neighboring note）",
+          "imagePath": "images/113-1-3.png"
+        },
+        {
+          "id": "113-1-13",
+          "group": "113-1-4",
+          "question": "此譜例出自荀貝格（A. Schoenberg）的《六首鋼琴小曲》，其創作年代為",
+          "image": "113-1-4.png",
+          "selections": [
+            "19 世紀前半",
+            "19 世紀後半",
+            "20 世紀前半",
+            "20 世紀後半"
+          ],
+          "answer": 2,
+          "keypoint": "《六首鋼琴小曲》（Op.19）為 20 世紀早期作品。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-13",
+          "normalizedId": "113-1-13",
+          "answerText": "20 世紀前半",
+          "imagePath": "images/113-1-4.png"
+        },
+        {
+          "id": "113-1-14",
+          "group": "113-1-4",
+          "question": "下列何者亦為荀貝格所作？",
+          "image": "113-1-4.png",
+          "selections": [
+            "歌劇《露露》",
+            "室內樂《月光小丑》",
+            "交響曲《浪漫》",
+            "歌曲《魔王》"
+          ],
+          "answer": 1,
+          "keypoint": "《月光小丑》（Pierrot Lunaire）為荀貝格代表作。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-14",
+          "normalizedId": "113-1-14",
+          "answerText": "室內樂《月光小丑》",
+          "imagePath": "images/113-1-4.png"
+        },
+        {
+          "id": "113-1-15",
+          "group": "113-1-4",
+          "question": "對此譜例之敘述，何者正確？",
+          "image": "113-1-4.png",
+          "selections": [
+            "曲末以小七和弦作結",
+            "穿插在右手三度雙音間的休止符，總時值皆相同",
+            "穿插在左手三度雙音間的休止符，總時值都是 2 分休止符",
+            "括弧中的音彙整，可組成大音階"
+          ],
+          "answer": 1,
+          "keypoint": "右手三度雙音間的休止配置在各處累計總時值一致。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-15",
+          "normalizedId": "113-1-15",
+          "answerText": "穿插在右手三度雙音間的休止符，總時值皆相同",
+          "imagePath": "images/113-1-4.png"
+        },
+        {
+          "id": "113-1-16",
+          "group": "113-1-5",
+          "question": "某泛音列的第六等分音為降 B 音，此泛音列的基音為",
+          "image": "",
+          "selections": [
+            "降 G 音",
+            "C 音",
+            "降 B 音",
+            "降 E 音"
+          ],
+          "answer": 3,
+          "keypoint": "第 6 泛音＝基音的「兩個八度＋完全五度」。若第 6 泛音為降 B，則基音為降 E",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-16",
+          "normalizedId": "113-1-16",
+          "answerText": "降 E 音",
+          "imagePath": null
+        },
+        {
+          "id": "113-1-17",
+          "group": "113-1-5",
+          "question": "右列譜例屬於臺灣哪一種類之歌謠？",
+          "image": "113-1-5.png",
+          "selections": [
+            "原住民古調",
+            "客家山歌",
+            "福佬民歌",
+            "校園民歌"
+          ],
+          "answer": 1,
+          "keypoint": "旋律線與語法呈現客家山歌常見的音型與行腔特徵。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-17",
+          "normalizedId": "113-1-17",
+          "answerText": "客家山歌",
+          "imagePath": "images/113-1-5.png"
+        },
+        {
+          "id": "113-1-18",
+          "group": "113-1-5",
+          "question": "甫於 2023 年逝世之歌仔戲文場音樂樂師林竹岸，畢生為歌仔戲後場音樂演奏保存與推廣做出巨大貢獻。請問下列對於台灣歌仔戲之敘述何者錯誤？",
+          "image": "",
+          "selections": [
+            "源自恆春地區",
+            "「七字調」為代表性唱腔",
+            "武場樂器以敲擊樂器為主",
+            "孫翠鳳為著名小生"
+          ],
+          "answer": 0,
+          "keypoint": "台灣歌仔戲源流主要與宜蘭地區歌仔/說唱系統相關，非「恆春地區」起源。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-18",
+          "normalizedId": "113-1-18",
+          "answerText": "源自恆春地區",
+          "imagePath": null
+        },
+        {
+          "id": "113-1-19",
+          "group": "113-1-5",
+          "question": "對拉威爾（M. Ravel）的敘述，何者錯誤？",
+          "image": "",
+          "selections": [
+            "部分作品汲取西班牙音樂之色彩",
+            "部分作品受爵士風格影響",
+            "曾獲羅馬大獎（Prix de Rome）首獎",
+            "曾將穆索斯基的《展覽會之畫》改編為管弦樂曲"
+          ],
+          "answer": 2,
+          "keypoint": "拉威爾未獲羅馬大獎首獎；但確實有西班牙色彩、爵士影響與《展覽會之畫》配器。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-19",
+          "normalizedId": "113-1-19",
+          "answerText": "曾獲羅馬大獎（Prix de Rome）首獎",
+          "imagePath": null
+        },
+        {
+          "id": "113-1-20",
+          "group": "113-1-5",
+          "question": "德國作曲家史托克豪森（K. Stockhausen）的擊樂獨奏作品《循環》（Zyklus）在樂器配置與樂曲編排皆可依演奏者的詮釋自由排列，請問此曲符合下列何者之創作理念？",
+          "image": "",
+          "selections": [
+            "機遇音樂（Aleatory music）",
+            "序列音樂（Serial music）",
+            "頻譜音樂（Spectral music）",
+            "低限音樂（Minimal music）"
+          ],
+          "answer": 0,
+          "keypoint": "作品具有「可自由排列」的開放形式（對應機遇/不確定性），同時史托克豪森亦以序列思維著稱（部分命題接受序列觀點）。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-20",
+          "normalizedId": "113-1-20",
+          "answerText": "機遇音樂（Aleatory music）",
+          "imagePath": null
+        },
+        {
+          "id": "113-1-21",
+          "group": "113-1-5",
+          "question": "「能樂」是哪一國的傳統藝術？",
+          "image": "",
+          "selections": [
+            "韓國",
+            "日本",
+            "菲律賓",
+            "泰國"
+          ],
+          "answer": 1,
+          "keypoint": "能樂（Noh）為日本古典舞台藝術。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-21",
+          "normalizedId": "113-1-21",
+          "answerText": "日本",
+          "imagePath": null
+        },
+        {
+          "id": "113-1-22",
+          "group": "113-1-5",
+          "question": "對邵族樂杵描述，何者錯誤？",
+          "image": "",
+          "selections": [
+            "循環反覆為杵樂特色",
+            "各杵演奏各自節奏",
+            "由木所製",
+            "為弦樂器"
+          ],
+          "answer": 3,
+          "keypoint": "邵族杵樂為木製敲擊／節奏性器物，不是弦樂器。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-22",
+          "normalizedId": "113-1-22",
+          "answerText": "為弦樂器",
+          "imagePath": null
+        },
+        {
+          "id": "113-1-23",
+          "group": "113-1-5",
+          "question": "南管演出時，歌者手持的樂器是",
+          "image": "",
+          "selections": [
+            "弦樂器",
+            "管樂器",
+            "敲擊樂器",
+            "鍵盤樂器"
+          ],
+          "answer": 2,
+          "keypoint": "南管演唱者常持拍板等節奏敲擊器物掌握板眼。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-23",
+          "normalizedId": "113-1-23",
+          "answerText": "敲擊樂器",
+          "imagePath": null
+        },
+        {
+          "id": "113-1-24",
+          "group": "113-1-5",
+          "question": "2024 年將於臺灣演出的音樂劇《西貢小姐》，其情節與下列哪一部歌劇相似？",
+          "image": "",
+          "selections": [
+            "《女人皆如此》",
+            "《卡門》",
+            "《莎樂美》",
+            "《蝴蝶夫人》"
+          ],
+          "answer": 3,
+          "keypoint": "《西貢小姐》常被視為與《蝴蝶夫人》具高度相似的敘事母題與結構。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-24",
+          "normalizedId": "113-1-24",
+          "answerText": "《蝴蝶夫人》",
+          "imagePath": null
+        },
+        {
+          "id": "113-1-25",
+          "group": "113-1-5",
+          "question": "此譜例改編自《西貢小姐》中的旋律，其演奏時間為",
+          "image": "113-1-6.png",
+          "selections": [
+            "30",
+            "36",
+            "42",
+            "60 秒"
+          ],
+          "answer": 0,
+          "keypoint": "速度標示 ♩＝72，且含反覆（1./2.）與 D.C. 回到起點、至 Fine 結束；需依「實際演奏路徑」計算總拍數。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "113-1-25",
+          "normalizedId": "113-1-25",
+          "answerText": "30",
+          "imagePath": "images/113-1-6.png"
+        }
+      ]
+    },
+    {
+      "id": "112-1",
+      "displayName": "112學年度",
+      "sourceFile": "112-1.json",
+      "questionType": "MCQ",
+      "questionCount": 20,
+      "groups": [
+        {
+          "name": "作品一",
+          "questionCount": 3,
+          "description": ""
+        },
+        {
+          "name": "作品二",
+          "questionCount": 2,
+          "description": ""
+        },
+        {
+          "name": "作品三",
+          "questionCount": 2,
+          "description": ""
+        },
+        {
+          "name": "作品四",
+          "questionCount": 2,
+          "description": ""
+        },
+        {
+          "name": "作品五",
+          "questionCount": 3,
+          "description": ""
+        },
+        {
+          "name": "綜合常識題",
+          "questionCount": 8,
+          "description": ""
+        }
+      ],
+      "questions": [
+        {
+          "id": "112-1-01",
+          "group": "112-1-1",
+          "question": "譜例選自披頭四（The Beatles）的歌曲 Hello, Goodbye 曲首的片段，請問披頭四是",
+          "image": "112-1-1.png",
+          "selections": [
+            "英國的搖滾樂團",
+            "美國的 Hip-Hop 歌手",
+            "蒙古的民歌團",
+            "阿根廷的探戈舞團"
+          ],
+          "answer": 0,
+          "keypoint": "The Beatles 為英國搖滾樂團。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-01",
+          "normalizedId": "112-1-01",
+          "answerText": "英國的搖滾樂團",
+          "imagePath": "images/112-1-1.png"
+        },
+        {
+          "id": "112-1-02",
+          "group": "112-1-1",
+          "question": "承上題，請問此片段運用了何種作曲手法？",
+          "image": "112-1-1.png",
+          "selections": [
+            "聲部間的對話",
+            "動機的模進",
+            "配器的疊置",
+            "聲響的頻譜分析"
+          ],
+          "answer": 1,
+          "keypoint": "短動機在不同音高位置反覆、呈現「移位再現」特徵。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-02",
+          "normalizedId": "112-1-02",
+          "answerText": "動機的模進",
+          "imagePath": "images/112-1-1.png"
+        },
+        {
+          "id": "112-1-03",
+          "group": "112-1-1",
+          "question": "承上題，此片段之調性為 C 大調，若每小節配置一和弦，則下列何種和聲級數進行最適合？",
+          "image": "112-1-1.png",
+          "selections": [
+            "ii - iii - V - vii° - V",
+            "I - ii⁶ - I⁶₄ - V - I",
+            "ii⁶₅ - I - V - vi - V",
+            "IV - V - iii - vi - I"
+          ],
+          "answer": 2,
+          "keypoint": "以 C 大調為前提，片段呈現「前屬（ii7 型）→主和弦→屬→欺騙至 vi→回到屬」的流向最貼近。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-03",
+          "normalizedId": "112-1-03",
+          "answerText": "ii⁶₅ - I - V - vi - V",
+          "imagePath": "images/112-1-1.png"
+        },
+        {
+          "id": "112-1-04",
+          "group": "112-1-6",
+          "question": "柴可夫斯基（P. Tchaikovsky）在芭蕾舞劇《胡桃鉗》之〈糖梅仙子〉中，使用何種樂器來表現其輕盈優雅的姿態？",
+          "image": "",
+          "selections": [
+            "管風琴（organ）",
+            "大鍵琴（harpsichord）",
+            "鋼片琴（celesta）",
+            "鋼琴（piano）"
+          ],
+          "answer": 2,
+          "keypoint": "〈糖梅仙子之舞〉最具代表性的音色即 celesta。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-04",
+          "normalizedId": "112-1-04",
+          "answerText": "鋼片琴（celesta）",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-05",
+          "group": "112-1-2",
+          "question": "右列譜例選自葛雷果聖歌（Gregorian chant）〈末日經〉（Dies irae），請問其創作時期為何？",
+          "image": "112-1-2.png",
+          "selections": [
+            "中世紀",
+            "文藝復興",
+            "巴洛克",
+            "古典"
+          ],
+          "answer": 0,
+          "keypoint": "Gregorian chant 為中世紀禮儀聖歌傳統。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-05",
+          "normalizedId": "112-1-05",
+          "answerText": "中世紀",
+          "imagePath": "images/112-1-2.png"
+        },
+        {
+          "id": "112-1-06",
+          "group": "112-1-2",
+          "question": "承上題，此樂譜以何種方式記譜？",
+          "image": "112-1-2.png",
+          "selections": [
+            "減字譜",
+            "紐碼譜",
+            "五線譜",
+            "工尺譜"
+          ],
+          "answer": 1,
+          "keypoint": "Gregorian chant 常見早期記譜法為紐碼譜（neumes）。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-06",
+          "normalizedId": "112-1-06",
+          "answerText": "紐碼譜",
+          "imagePath": "images/112-1-2.png"
+        },
+        {
+          "id": "112-1-07",
+          "group": "112-1-3",
+          "question": "去年（2022）甫逝世的楊秀卿女士，是下列何種傳統音樂的代表性民間藝師？",
+          "image": "",
+          "selections": [
+            "唸歌仔",
+            "歌仔戲",
+            "南管",
+            "北管"
+          ],
+          "answer": 0,
+          "keypoint": "楊秀卿為唸歌仔（說唱）重要藝師。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-07",
+          "normalizedId": "112-1-07",
+          "answerText": "唸歌仔",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-08",
+          "group": "112-1-3",
+          "question": "唸歌仔的伴奏樂器為",
+          "image": "",
+          "selections": [
+            "古箏",
+            "月琴",
+            "琵琶",
+            "嗩吶"
+          ],
+          "answer": 1,
+          "keypoint": "唸歌仔常以月琴等伴奏。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-08",
+          "normalizedId": "112-1-08",
+          "answerText": "月琴",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-09",
+          "group": "112-1-4",
+          "question": "下列何者不是浪漫時期的音樂特徵？",
+          "image": "",
+          "selections": [
+            "表現作曲家獨特個性和情緒",
+            "器樂曲大多屬於「標題音樂」",
+            "「交響詩」是此時期產生的音樂曲種",
+            "運用大量五聲音階及全音音階的手法"
+          ],
+          "answer": 3,
+          "keypoint": "「大量全音音階」更常與印象派等語法連結，非浪漫時期的一般性特徵描述。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-09",
+          "normalizedId": "112-1-09",
+          "answerText": "運用大量五聲音階及全音音階的手法",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-10",
+          "group": "112-1-4",
+          "question": "下列何者屬於浪漫時期的作曲家？",
+          "image": "",
+          "selections": [
+            "韓德爾（G. F. Händel）",
+            "莫札特（W. A. Mozart）",
+            "蕭邦（F. Chopin）",
+            "蓋西文（G. Gershwin）"
+          ],
+          "answer": 2,
+          "keypoint": "蕭邦為浪漫時期代表作曲家。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-10",
+          "normalizedId": "112-1-10",
+          "answerText": "蕭邦（F. Chopin）",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-11",
+          "group": "112-1-6",
+          "question": "在歌仔戲中呈現悲劇女性角色的行當，稱為",
+          "image": "",
+          "selections": [
+            "老生",
+            "小生",
+            "刀馬旦",
+            "苦旦"
+          ],
+          "answer": 3,
+          "keypoint": "「苦旦」即以悲苦命運女性角色為主的旦角分支。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-11",
+          "normalizedId": "112-1-11",
+          "answerText": "苦旦",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-12",
+          "group": "112-1-6",
+          "question": "請問下列何者非舞曲？",
+          "image": "",
+          "selections": [
+            "Menuett",
+            "Gigue",
+            "Sarabande",
+            "Capriccio"
+          ],
+          "answer": 3,
+          "keypoint": "Capriccio 為「隨想曲/怪想曲」體裁，非舞曲類型。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-12",
+          "normalizedId": "112-1-12",
+          "answerText": "Capriccio",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-13",
+          "group": "112-1-6",
+          "question": "2016 年得到金曲獎肯定的歌手桑布伊是臺灣哪一族原住民？",
+          "image": "",
+          "selections": [
+            "排灣",
+            "鄒",
+            "卑南",
+            "泰雅"
+          ],
+          "answer": 2,
+          "keypoint": "桑布伊（Suming）為卑南族。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-13",
+          "normalizedId": "112-1-13",
+          "answerText": "卑南",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-14",
+          "group": "112-1-6",
+          "question": "今年（2023）即將來臺開唱的韓國女子團體 Blackpink，其歌曲 Pink Venon 開頭的韓國傳統樂器為",
+          "image": "",
+          "selections": [
+            "西塔琴",
+            "尺八",
+            "伽耶琴",
+            "梆笛"
+          ],
+          "answer": 0,
+          "keypoint": "解答標示「送分」。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-14",
+          "normalizedId": "112-1-14",
+          "answerText": "西塔琴",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-15",
+          "group": "112-1-6",
+          "question": "「駛犁歌」是流行在下列哪一個地區的藝陣表演歌曲？",
+          "image": "",
+          "selections": [
+            "臺東",
+            "花蓮",
+            "宜蘭",
+            "臺南"
+          ],
+          "answer": 3,
+          "keypoint": "答案卷對應 D。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-15",
+          "normalizedId": "112-1-15",
+          "answerText": "臺南",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-16",
+          "group": "112-1-6",
+          "question": "表現力極強的薩氏管（saxophone），請問有出現在下列何首樂曲？",
+          "image": "",
+          "selections": [
+            "白遼士《哈洛德在義大利》",
+            "拉威爾《波雷洛》",
+            "貝多芬《田園》交響曲",
+            "舒伯特《偉大》交響曲"
+          ],
+          "answer": 1,
+          "keypoint": "《波雷洛》配器包含薩氏管段落。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-16",
+          "normalizedId": "112-1-16",
+          "answerText": "拉威爾《波雷洛》",
+          "imagePath": null
+        },
+        {
+          "id": "112-1-17",
+          "group": "112-1-5",
+          "question": "請問右列譜例的作曲家是？",
+          "image": "112-1-3.png",
+          "selections": [
+            "普契尼（G. Puccini）",
+            "華格納（R. Wagner）",
+            "羅西尼（G. Rossini）",
+            "威爾第（G. Verdi）"
+          ],
+          "answer": 3,
+          "keypoint": "答案卷標示 D。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-17",
+          "normalizedId": "112-1-17",
+          "answerText": "威爾第（G. Verdi）",
+          "imagePath": "images/112-1-3.png"
+        },
+        {
+          "id": "112-1-18",
+          "group": "112-1-5",
+          "question": "承上題，此譜例所呈現的調性為",
+          "image": "112-1-3.png",
+          "selections": [
+            "d 小調",
+            "F 大調",
+            "g 小調",
+            "降 B 大調"
+          ],
+          "answer": 3,
+          "keypoint": "答案卷標示 D。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-18",
+          "normalizedId": "112-1-18",
+          "answerText": "降 B 大調",
+          "imagePath": "images/112-1-3.png"
+        },
+        {
+          "id": "112-1-19",
+          "group": "112-1-5",
+          "question": "承上題，譜上出現的 con grazia 意思是",
+          "image": "112-1-3.png",
+          "selections": [
+            "優雅的",
+            "活潑的",
+            "沉悶的",
+            "激烈的"
+          ],
+          "answer": 0,
+          "keypoint": "con grazia 為義大利語表情術語，意為「優雅地」。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-19",
+          "normalizedId": "112-1-19",
+          "answerText": "優雅的",
+          "imagePath": "images/112-1-3.png"
+        },
+        {
+          "id": "112-1-20",
+          "group": "112-1-6",
+          "question": "臺灣客家之「三腳採茶戲」說唱內容詼諧逗趣，其編制多為",
+          "image": "",
+          "selections": [
+            "一丑二旦",
+            "二丑一旦",
+            "三丑",
+            "三旦"
+          ],
+          "answer": 0,
+          "keypoint": "",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-1-20",
+          "normalizedId": "112-1-20",
+          "answerText": "一丑二旦",
+          "imagePath": null
+        }
+      ]
+    },
+    {
+      "id": "112-2",
+      "displayName": "112學年度補考",
+      "sourceFile": "112-2.json",
+      "questionType": "MCQ",
+      "questionCount": 20,
+      "groups": [
+        {
+          "name": "作品一",
+          "questionCount": 3,
+          "description": ""
+        },
+        {
+          "name": "作品二",
+          "questionCount": 3,
+          "description": ""
+        },
+        {
+          "name": "作品三",
+          "questionCount": 3,
+          "description": ""
+        },
+        {
+          "name": "綜合常識題",
+          "questionCount": 11,
+          "description": ""
+        }
+      ],
+      "questions": [
+        {
+          "id": "112-2-01",
+          "group": "112-2-1",
+          "question": "譜例旋律出自哪一部歌劇？",
+          "image": "112-2-1.png",
+          "selections": [
+            "魔彈射手",
+            "費加洛婚禮",
+            "杜蘭朵",
+            "阿依達"
+          ],
+          "answer": 2,
+          "keypoint": "旋律線條與歌劇《杜蘭朵》常見主題／詠嘆調語彙相符。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-01",
+          "normalizedId": "112-2-01",
+          "answerText": "杜蘭朵",
+          "imagePath": "images/112-2-1.png"
+        },
+        {
+          "id": "112-2-02",
+          "group": "112-2-1",
+          "question": "a.魔彈射手 b.費加洛婚禮 c.杜蘭朵 d.阿依達。選項內各作品如依創作年代排序，何者正確？",
+          "image": "112-2-1.png",
+          "selections": [
+            "cdab",
+            "dbca",
+            "acbd",
+            "badc"
+          ],
+          "answer": 3,
+          "keypoint": "費加洛婚禮（1786）→魔彈射手（1821）→阿依達（1871）→杜蘭朵（1926）為由早到晚。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-02",
+          "normalizedId": "112-2-02",
+          "answerText": "badc",
+          "imagePath": "images/112-2-1.png"
+        },
+        {
+          "id": "112-2-03",
+          "group": "112-2-1",
+          "question": "譜例旋律，若每小節配置一和弦，則下列何種級數進行最適合？",
+          "image": "112-2-1.png",
+          "selections": [
+            "I-IV-ii-V",
+            "V-I-IV-vii",
+            "vi-V-I-iii",
+            "IV-vi-V-IV"
+          ],
+          "answer": 0,
+          "keypoint": "旋律起句為主功能，中段導向下屬／前屬，句末以屬功能形成合理收束。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-03",
+          "normalizedId": "112-2-03",
+          "answerText": "I-IV-ii-V",
+          "imagePath": "images/112-2-1.png"
+        },
+        {
+          "id": "112-2-04",
+          "group": "112-2-4",
+          "question": "下列何者盛行於巴洛克時期？",
+          "image": "",
+          "selections": [
+            "無伴奏合唱",
+            "大協奏曲",
+            "藝術歌曲",
+            "弦樂四重奏"
+          ],
+          "answer": 1,
+          "keypoint": "Concerto grosso（大協奏曲）為巴洛克器樂核心體裁之一。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-04",
+          "normalizedId": "112-2-04",
+          "answerText": "大協奏曲",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-05",
+          "group": "112-2-4",
+          "question": "有關《布蘭詩歌》敘述，下列何者正確？",
+          "image": "",
+          "selections": [
+            "原作為芭蕾舞劇",
+            "其作曲者本身亦為音樂教育學家",
+            "為 19 世紀中期作品",
+            "編制為弦樂團"
+          ],
+          "answer": 1,
+          "keypoint": "卡爾・奧福除作曲外，亦以奧福教學法聞名。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-05",
+          "normalizedId": "112-2-05",
+          "answerText": "其作曲者本身亦為音樂教育學家",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-06",
+          "group": "112-2-4",
+          "question": "中國哪一種樂器傳入日本後，稱為尺八？",
+          "image": "",
+          "selections": [
+            "簫",
+            "笛",
+            "塤",
+            "巴烏"
+          ],
+          "answer": 0,
+          "keypoint": "尺八之源流與中國端吹樂器「簫」系統相關。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-06",
+          "normalizedId": "112-2-06",
+          "answerText": "簫",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-07",
+          "group": "112-2-4",
+          "question": "下列中國藝術歌曲作曲者及樂曲之配對何者有誤？",
+          "image": "",
+          "selections": [
+            "黃自《踏雪尋梅》",
+            "趙元任《教我如何不想他》",
+            "劉雪庵《我住長江頭》",
+            "蕭友梅《問》"
+          ],
+          "answer": 2,
+          "keypoint": "《我住長江頭》常見作曲者為青主，非劉雪庵。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-07",
+          "normalizedId": "112-2-07",
+          "answerText": "劉雪庵《我住長江頭》",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-08",
+          "group": "112-2-4",
+          "question": "關於作曲家與作品之配對，下列何者正確？",
+          "image": "",
+          "selections": [
+            "江文也《臺灣舞曲》",
+            "呂泉生《楓橋夜泊》",
+            "郭芝苑《望春風》",
+            "陳泗治《阮若打開心內的門窗》"
+          ],
+          "answer": 0,
+          "keypoint": "《臺灣舞曲》確為江文也作品。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-08",
+          "normalizedId": "112-2-08",
+          "answerText": "江文也《臺灣舞曲》",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-09",
+          "group": "112-2-4",
+          "question": "臺灣歌仔戲的著名演員－廖瓊枝以何者唱腔行當著稱？",
+          "image": "",
+          "selections": [
+            "生",
+            "旦",
+            "淨",
+            "丑"
+          ],
+          "answer": 1,
+          "keypoint": "廖瓊枝以旦行表演聞名。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-09",
+          "normalizedId": "112-2-09",
+          "answerText": "旦",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-10",
+          "group": "112-2-4",
+          "question": "舒伯特的藝術歌曲《魔王》，根據其內容，可定位為何種歌曲？",
+          "image": "",
+          "selections": [
+            "情歌",
+            "牧歌",
+            "敘事歌",
+            "經文歌"
+          ],
+          "answer": 2,
+          "keypoint": "《魔王》以完整故事情節與角色敘事為核心。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-10",
+          "normalizedId": "112-2-10",
+          "answerText": "敘事歌",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-11",
+          "group": "112-2-4",
+          "question": "下列何者屬於客家民歌？",
+          "image": "",
+          "selections": [
+            "思想起",
+            "牛犁歌",
+            "平板",
+            "丟丟銅"
+          ],
+          "answer": 2,
+          "keypoint": "「平板」為客家山歌系統常見曲調。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-11",
+          "normalizedId": "112-2-11",
+          "answerText": "平板",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-12",
+          "group": "112-2-4",
+          "question": "和弦進行 I–IV–I 是",
+          "image": "",
+          "selections": [
+            "正格終止",
+            "變格終止",
+            "假終止",
+            "半終止"
+          ],
+          "answer": 1,
+          "keypoint": "IV→I 為變格（Plagal）終止的典型功能骨架。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-12",
+          "normalizedId": "112-2-12",
+          "answerText": "變格終止",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-13",
+          "group": "112-2-2",
+          "question": "此曲為浦朗克作品片段，請問上下聲部樂器組合最有可能是？",
+          "image": "112-2-2.png",
+          "selections": [
+            "長笛與長號",
+            "鐵琴與木琴",
+            "小提琴與大提琴",
+            "單簧管與低音管"
+          ],
+          "answer": 3,
+          "keypoint": "譜例呈現高音木管旋律與低音木管支撐，且為浦朗克常用配置。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-13",
+          "normalizedId": "112-2-13",
+          "answerText": "單簧管與低音管",
+          "imagePath": "images/112-2-2.png"
+        },
+        {
+          "id": "112-2-14",
+          "group": "112-2-2",
+          "question": "演奏此片段所需時間為",
+          "image": "112-2-2.png",
+          "selections": [
+            "兩秒",
+            "三秒",
+            "四秒",
+            "一秒"
+          ],
+          "answer": 0,
+          "keypoint": "依譜例速度與拍數換算，演奏時間約為兩秒。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-14",
+          "normalizedId": "112-2-14",
+          "answerText": "兩秒",
+          "imagePath": "images/112-2-2.png"
+        },
+        {
+          "id": "112-2-15",
+          "group": "112-2-2",
+          "question": "下列何者與此曲作曲家屬於同一團體？",
+          "image": "112-2-2.png",
+          "selections": [
+            "德布西",
+            "庫普蘭",
+            "米堯",
+            "布列茲"
+          ],
+          "answer": 2,
+          "keypoint": "浦朗克與米堯同屬「六人組（Les Six）」。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-15",
+          "normalizedId": "112-2-15",
+          "answerText": "米堯",
+          "imagePath": "images/112-2-2.png"
+        },
+        {
+          "id": "112-2-16",
+          "group": "112-2-3",
+          "question": "此曲為《悲慘世界》裡的著名合唱曲片段，請問《悲慘世界》為",
+          "image": "112-2-3.png",
+          "selections": [
+            "歌劇",
+            "神劇",
+            "音樂劇",
+            "能劇"
+          ],
+          "answer": 2,
+          "keypoint": "《Les Misérables》為舞台音樂劇體裁。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-16",
+          "normalizedId": "112-2-16",
+          "answerText": "音樂劇",
+          "imagePath": "images/112-2-3.png"
+        },
+        {
+          "id": "112-2-17",
+          "group": "112-2-3",
+          "question": "此片段倒數第二小節的休止符後進行了一次轉調，請問是由何調轉至何調？",
+          "image": "112-2-3.png",
+          "selections": [
+            "a 小調至 A 大調",
+            "C 大調至 a 小調",
+            "d 小調至 a 小調",
+            "C 大調至 c 小調"
+          ],
+          "answer": 1,
+          "keypoint": "調性中心由 C 大調轉向其關係小調 a 小調，調號不變但重心改變。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-17",
+          "normalizedId": "112-2-17",
+          "answerText": "C 大調至 a 小調",
+          "imagePath": "images/112-2-3.png"
+        },
+        {
+          "id": "112-2-18",
+          "group": "112-2-3",
+          "question": "請問圈內音為何種和聲外音？",
+          "image": "112-2-3.png",
+          "selections": [
+            "先現音",
+            "倚音",
+            "經過音",
+            "鄰音"
+          ],
+          "answer": 3,
+          "keypoint": "圈內音為離開穩定音後再級進回原音的鄰音型態。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-18",
+          "normalizedId": "112-2-18",
+          "answerText": "鄰音",
+          "imagePath": "images/112-2-3.png"
+        },
+        {
+          "id": "112-2-19",
+          "group": "112-2-4",
+          "question": "下列何者不屬於臺灣三大國家級音樂展演場館？",
+          "image": "",
+          "selections": [
+            "宜蘭傳統藝術中心",
+            "國家兩廳院",
+            "台中國家歌劇院",
+            "衛武營國家藝術文化中心"
+          ],
+          "answer": 0,
+          "keypoint": "三大場館為兩廳院、台中國家歌劇院、衛武營；宜蘭傳藝中心不在其列。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-19",
+          "normalizedId": "112-2-19",
+          "answerText": "宜蘭傳統藝術中心",
+          "imagePath": null
+        },
+        {
+          "id": "112-2-20",
+          "group": "112-2-4",
+          "question": "關於奏鳴曲形式，下列何者敘述不正確？",
+          "image": "",
+          "selections": [
+            "通常出現在奏鳴曲第一樂章",
+            "分成呈示部、發展部、再現部",
+            "呈示部與再現部各有兩個主題",
+            "歌曲是奏鳴曲形式其中一個變體"
+          ],
+          "answer": 3,
+          "keypoint": "奏鳴曲式為器樂形式結構，歌曲屬體裁，非其形式變體。",
+          "steps": "",
+          "wrongAnswers": "",
+          "sourceId": "112-2-20",
+          "normalizedId": "112-2-20",
+          "answerText": "歌曲是奏鳴曲形式其中一個變體",
+          "imagePath": null
+        }
+      ]
+    }
+  ]
+}

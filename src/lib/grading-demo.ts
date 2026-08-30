@@ -126,7 +126,10 @@ export const upsertDemoRecentWork = (works: DemoRecentWork[]) => {
   return [demoRecentWork, ...others];
 };
 
-const canUseStorage = () => typeof window !== "undefined" && Boolean(window.localStorage);
+const canUseStorage = () =>
+  typeof window !== "undefined" &&
+  typeof window.localStorage?.getItem === "function" &&
+  typeof window.localStorage?.setItem === "function";
 
 const isDemoRecentWork = (value: unknown): value is DemoRecentWork => {
   if (!value || typeof value !== "object") return false;

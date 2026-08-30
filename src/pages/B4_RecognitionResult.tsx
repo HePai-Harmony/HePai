@@ -1,257 +1,293 @@
-import { useEffect, useState } from 'react';
-import { AlertTriangle } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { AlertTriangle, CheckCircle2, Music2 } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import PageHeader from '@/components/shared/PageHeader';
+import PageHeader from "@/components/shared/PageHeader";
+import { DEMO_CAPTURE_IMAGE, saveDemoRecentWork } from "@/lib/grading-demo";
 import {
-  buildRecognitionCards,
-  DEMO_CAPTURE_IMAGE,
-  DEMO_RECOGNITION_ISSUES,
-  saveDemoRecentWork,
-  type RecognitionIssue,
-} from '@/lib/grading-demo';
-import { cn } from '@/lib/utils';
+  DetectedNote,
+  HarmonyVoice,
+  midiToNoteName,
+  readManualCorrections,
+} from "@/lib/manual-correction";
 
 const SCORE_WIDTH = 2048;
 const SCORE_HEIGHT = 840;
-
-const issueColors: Record<string, { stroke: string; fill: string }> = {
-  'parallel-fifth-1': { stroke: '#dc2626', fill: 'rgba(220,38,38,0.14)' },
-  'parallel-fifth-2': { stroke: '#ea580c', fill: 'rgba(234,88,12,0.14)' },
-  'parallel-octave': { stroke: '#2563eb', fill: 'rgba(37,99,235,0.14)' },
-  'over-8': { stroke: '#7c3aed', fill: 'rgba(124,58,237,0.14)' },
+const VOICE_ORDER: HarmonyVoice[] = ["S", "A", "T", "B"];
+const VOICE_NAMES: Record<HarmonyVoice, string> = {
+  S: "Soprano",
+  A: "Alto",
+  T: "Tenor",
+  B: "Bass",
 };
 
-const defaultIssueColor = { stroke: '#0f172a', fill: 'rgba(15,23,42,0.10)' };
+const getVisualVoice = (note: DetectedNote, notes: DetectedNote[]) => {
+  const notesAtSameBeat = notes
+    .filter((item) => item.measure === note.measure && item.beat === note.beat)
+    .sort((first, second) => first.y - second.y);
+  const verticalIndex = notesAtSameBeat.findIndex((item) => item.id === note.id);
 
-const SelectedIssueBadge = ({ issue }: { issue: RecognitionIssue }) => (
-  <div className="flex items-center justify-between gap-3">
-    <div>
-      <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">目前選取</p>
-      <p className="mt-1 text-sm font-medium">{issue.title}</p>
-    </div>
-    <div className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{issue.voices}</div>
-  </div>
-);
+  return VOICE_ORDER[verticalIndex] ?? note.voice;
+};
+
+interface RecognizedBeat {
+  id: string;
+  measure: number;
+  beat: number;
+  notes: DetectedNote[];
+  confidence: number;
+}
+
+const groupRecognizedBeats = (notes: DetectedNote[]): RecognizedBeat[] => {
+  const groups = new Map<string, DetectedNote[]>();
+
+  notes.forEach((note) => {
+    const key = `${note.measure}-${note.beat}`;
+    groups.set(key, [...(groups.get(key) ?? []), note]);
+  });
+
+  return [...groups.entries()]
+    .map(([id, beatNotes]) => ({
+      id,
+      measure: beatNotes[0].measure,
+      beat: beatNotes[0].beat,
+      notes: [...beatNotes].sort(
+        (first, second) => VOICE_ORDER.indexOf(first.voice) - VOICE_ORDER.indexOf(second.voice)
+      ),
+      confidence:
+        beatNotes.reduce((total, note) => total + note.confidence, 0) / beatNotes.length,
+    }))
+    .sort((first, second) => first.measure - second.measure || first.beat - second.beat);
+};
 
 const B4RecognitionResult = () => {
   const navigate = useNavigate();
-  const [selectedIssueId, setSelectedIssueId] = useState(DEMO_RECOGNITION_ISSUES[0].id);
+  const [recognizedNotes] = useState(() => readManualCorrections());
+  const beats = useMemo(() => groupRecognizedBeats(recognizedNotes), [recognizedNotes]);
+  const [selectedBeatId, setSelectedBeatId] = useState(beats[0]?.id ?? "");
+  const selectedBeat = beats.find((beat) => beat.id === selectedBeatId) ?? beats[0];
+  const lowConfidenceCount = recognizedNotes.filter((note) => note.confidence < 0.8).length;
+  const overallConfidence = Math.round(
+    (recognizedNotes.reduce((total, note) => total + note.confidence, 0) /
+      Math.max(recognizedNotes.length, 1)) *
+      100
+  );
 
   useEffect(() => {
     saveDemoRecentWork();
   }, []);
 
-  const orderedIssues = buildRecognitionCards(DEMO_RECOGNITION_ISSUES, selectedIssueId);
-  const selectedIssue = orderedIssues[0];
-  const severeCount = DEMO_RECOGNITION_ISSUES.filter((issue) => issue.severity === 'severe').length;
-
-  const renderIssueSummary = (issue: RecognitionIssue) => (
-    <>
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className={cn('rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em]', issue.accent)}>
-              {issue.shortLabel}
-            </span>
-            <span className="text-[11px] text-muted-foreground">{issue.measureLabel}</span>
-          </div>
-          <h3 className="mt-3 text-lg font-display font-semibold">{issue.title}</h3>
-          <p className="mt-1 text-sm text-muted-foreground">{issue.voices}</p>
-        </div>
-        <button
-          type="button"
-          onClick={() => setSelectedIssueId(issue.id)}
-          className="rounded-full border border-border bg-background px-3 py-1 text-[11px] text-muted-foreground"
-        >
-          定位
-        </button>
-      </div>
-
-      <div className="mt-4 grid gap-3">
-        <section className="rounded-2xl bg-background px-4 py-3">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">錯誤摘要</p>
-          <p className="mt-2 text-sm font-medium leading-relaxed">{issue.summary}</p>
-        </section>
-        <section className="rounded-2xl bg-background px-4 py-3">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">為什麼會被抓到</p>
-          <p className="mt-2 text-sm leading-relaxed text-foreground">{issue.why}</p>
-        </section>
-        <section className="rounded-2xl bg-background px-4 py-3">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">下一步怎麼改</p>
-          <p className="mt-2 text-sm leading-relaxed text-foreground">{issue.fix}</p>
-        </section>
-      </div>
-
-      <div className="mt-3 rounded-2xl border border-dashed border-border bg-background px-4 py-3">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">快速檢查點</p>
-        <p className="mt-2 text-sm leading-relaxed">{issue.checkpoint}</p>
-      </div>
-    </>
-  );
-
   return (
-    <div className="min-h-screen bg-background pb-24">
-      <PageHeader title="辨識結果" showBack />
-      <div className="px-4 pt-4 space-y-4">
-        <section className="rounded-[2rem] border border-border bg-[linear-gradient(180deg,rgba(34,211,238,0.06),rgba(255,255,255,1)_34%)] p-4 shadow-elevated">
+    <div className="min-h-screen bg-background pb-40">
+      <PageHeader title="確認辨識音符" showBack />
+
+      <main className="space-y-4 px-4 pt-4">
+        <section className="rounded-[2rem] border border-border bg-card p-4 shadow-elevated">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-primary/62">Recognition Review</p>
-              <h2 className="mt-1 text-lg font-display font-semibold">已完成譜面辨識與錯誤定位</h2>
+              <p className="text-[11px] uppercase tracking-[0.22em] text-primary/65">
+                Recognition Check
+              </p>
+              <h1 className="mt-1 text-lg font-display font-semibold">
+                已辨識 {recognizedNotes.length} 個音符，請先確認
+              </h1>
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                先看譜面中的當前錯誤，再從下方切換到其他問題。畫面一次只強調一個錯誤，避免多框重疊干擾判讀。
+                下方是 AI 從譜面讀到的 SATB 音名。這一步只確認辨識結果，確認後才會開始檢查平行五度等和聲規則。
               </p>
             </div>
-            <div className="rounded-2xl border border-primary/12 bg-primary/8 px-3 py-2 text-right">
-              <p className="text-[11px] text-primary/70">辨識信心度</p>
-              <p className="mt-1 text-lg font-semibold text-primary">96%</p>
+            <div className="shrink-0 rounded-2xl border border-primary/15 bg-primary/8 px-3 py-2 text-right">
+              <p className="text-[11px] text-primary/70">平均信心度</p>
+              <p className="mt-1 text-lg font-semibold text-primary">{overallConfidence}%</p>
             </div>
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-2">
-            <div className="rounded-2xl bg-card px-3 py-3 shadow-card">
-              <p className="text-[11px] text-muted-foreground">已框選錯誤</p>
-              <p className="mt-1 text-lg font-semibold">{DEMO_RECOGNITION_ISSUES.length}</p>
+            <div className="rounded-2xl bg-background px-3 py-3">
+              <p className="text-[11px] text-muted-foreground">辨識位置</p>
+              <p className="mt-1 text-lg font-semibold">{beats.length} 拍</p>
             </div>
-            <div className="rounded-2xl bg-card px-3 py-3 shadow-card">
-              <p className="text-[11px] text-muted-foreground">嚴重違規</p>
-              <p className="mt-1 text-lg font-semibold text-destructive">{severeCount}</p>
+            <div className="rounded-2xl bg-background px-3 py-3">
+              <p className="text-[11px] text-muted-foreground">建議優先核對</p>
+              <p className="mt-1 text-lg font-semibold text-amber-600">{lowConfidenceCount} 音</p>
             </div>
           </div>
         </section>
 
-        <section className="rounded-[2rem] border border-border bg-card p-3 shadow-card">
-          <div className="relative aspect-[2048/840] overflow-hidden rounded-[1.5rem] border border-border/60 bg-muted/30">
-            <svg
-              viewBox={`0 0 ${SCORE_WIDTH} ${SCORE_HEIGHT}`}
-              className="absolute inset-0 h-full w-full"
-              aria-labelledby="recognition-score-title"
-            >
-              <title id="recognition-score-title">已辨識的四部和聲樂譜與錯誤框選</title>
-              <image href={DEMO_CAPTURE_IMAGE} x="0" y="0" width={SCORE_WIDTH} height={SCORE_HEIGHT} preserveAspectRatio="xMidYMid meet" />
-              <rect x="0" y="0" width={SCORE_WIDTH} height={SCORE_HEIGHT} fill="url(#scoreShade)" />
-              <defs>
-                <linearGradient id="scoreShade" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="rgba(7,12,20,0.01)" />
-                  <stop offset="100%" stopColor="rgba(7,12,20,0.10)" />
-                </linearGradient>
-              </defs>
+        {selectedBeat && (
+          <section className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
+            <div className="flex items-center justify-between border-b border-border px-4 py-3">
+              <div>
+                <p className="text-sm font-semibold">原始譜面定位</p>
+                <p className="text-xs text-muted-foreground">
+                  第 {selectedBeat.measure} 小節・第 {selectedBeat.beat} 拍
+                </p>
+              </div>
+              <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+                {Math.round(selectedBeat.confidence * 100)}%
+              </span>
+            </div>
 
-              {DEMO_RECOGNITION_ISSUES.map((issue, index) => {
-                const isActive = issue.id === selectedIssueId;
-                const color = issueColors[issue.id] ?? defaultIssueColor;
-                const centerX = issue.box.x + issue.box.width / 2;
-                const markerY = issue.box.y - 18;
-                const issueLabel = `${issue.title}，${issue.measureLabel}`;
+            <div className="overflow-x-auto bg-[#f8f5ee] p-2">
+              <div className="min-w-[680px]">
+                <svg
+                  viewBox={`0 0 ${SCORE_WIDTH} ${SCORE_HEIGHT}`}
+                  className="h-auto w-full rounded-xl bg-white"
+                  aria-labelledby="recognition-score-title"
+                >
+                  <title id="recognition-score-title">AI 辨識音符在原始四部和聲譜面的定位</title>
+                  <image
+                    href={DEMO_CAPTURE_IMAGE}
+                    x="0"
+                    y="0"
+                    width={SCORE_WIDTH}
+                    height={SCORE_HEIGHT}
+                    preserveAspectRatio="xMidYMid meet"
+                  />
 
-                return (
-                  <g
-                    key={issue.id}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={issueLabel}
-                    onClick={() => setSelectedIssueId(issue.id)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        setSelectedIssueId(issue.id);
-                      }
-                    }}
-                    className="cursor-pointer"
-                  >
-                    {isActive ? (
-                      <>
-                        <rect
-                          x={issue.box.x}
-                          y={issue.box.y}
-                          width={issue.box.width}
-                          height={issue.box.height}
-                          rx="18"
-                          fill={color.fill}
-                          stroke={color.stroke}
-                          strokeWidth="5"
+                  <rect
+                    x={Math.max(0, selectedBeat.notes[0].x - 55)}
+                    y="245"
+                    width="110"
+                    height="400"
+                    rx="20"
+                    fill="rgba(14,165,233,0.08)"
+                    stroke="#0ea5e9"
+                    strokeWidth="4"
+                    strokeDasharray="12 8"
+                  />
+
+                  {recognizedNotes.map((note) => {
+                    const isSelected = selectedBeat.notes.some((item) => item.id === note.id);
+                    const isLowConfidence = note.confidence < 0.8;
+                    const visualVoice = getVisualVoice(note, recognizedNotes);
+
+                    return (
+                      <g
+                        key={note.id}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`第 ${note.measure} 小節第 ${note.beat} 拍，${visualVoice} ${midiToNoteName(note.midi)}`}
+                        onClick={() => setSelectedBeatId(`${note.measure}-${note.beat}`)}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            setSelectedBeatId(`${note.measure}-${note.beat}`);
+                          }
+                        }}
+                        className="cursor-pointer"
+                      >
+                        <circle cx={note.x} cy={note.y} r="31" fill="transparent" />
+                        <circle
+                          cx={note.x}
+                          cy={note.y}
+                          r={isSelected ? 18 : 13}
+                          fill={isSelected ? "#0284c7" : "#ffffff"}
+                          stroke={isLowConfidence ? "#d97706" : isSelected ? "#0369a1" : "#64748b"}
+                          strokeWidth={isLowConfidence ? 5 : 3}
+                          strokeDasharray={isLowConfidence ? "7 4" : undefined}
                         />
-                        <rect
-                          x={issue.box.x - 2}
-                          y={issue.box.y - 2}
-                          width={issue.box.width + 4}
-                          height={issue.box.height + 4}
-                          rx="20"
-                          fill="none"
-                          stroke="rgba(255,255,255,0.86)"
-                          strokeWidth="2"
-                        />
-                        <g transform={`translate(${issue.box.x + 8}, ${issue.box.y - 40})`}>
-                          <rect
-                            width={Math.max(118, issue.title.length * 16)}
-                            height="28"
-                            rx="14"
-                            fill="rgba(255,255,255,0.96)"
-                            stroke={color.stroke}
-                            strokeWidth="1.5"
-                          />
-                          <text x="12" y="19" fontSize="14" fontWeight="700" fill={color.stroke}>
-                            {issue.title}
-                          </text>
-                        </g>
-                      </>
-                    ) : (
-                      <>
-                        <line x1={centerX} y1={markerY + 14} x2={centerX} y2={issue.box.y} stroke={color.stroke} strokeWidth="2" opacity="0.68" />
-                        <circle cx={centerX} cy={markerY} r="16" fill="rgba(255,255,255,0.95)" stroke={color.stroke} strokeWidth="2" />
-                        <text x={centerX} y={markerY + 4.5} textAnchor="middle" fontSize="12" fontWeight="700" fill={color.stroke}>
-                          {index + 1}
+                        <text
+                          x={note.x}
+                          y={note.y + 6}
+                          textAnchor="middle"
+                          fontSize="16"
+                          fontWeight="700"
+                          fill={isSelected ? "#ffffff" : "#334155"}
+                        >
+                          {visualVoice}
                         </text>
-                      </>
-                    )}
-                  </g>
-                );
-              })}
-            </svg>
+                      </g>
+                    );
+                  })}
+                </svg>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <section aria-label="AI 辨識音符列表" className="rounded-[2rem] border border-border bg-card p-3 shadow-card">
+          <div className="mb-3 flex items-center justify-between px-1">
+            <div>
+              <p className="text-sm font-semibold">AI 辨識到的音</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">點選任一拍，可在上方譜面定位</p>
+            </div>
+            <Music2 size={18} className="text-primary" />
           </div>
 
-          <div
-            data-testid="selected-issue-badge-desktop"
-            className="mt-3 hidden rounded-2xl border border-border/70 bg-background px-4 py-3 sm:block"
-          >
-            <SelectedIssueBadge issue={selectedIssue} />
-          </div>
-        </section>
-
-        <section data-testid="selected-issue-badge-mobile" className="rounded-[2rem] border border-border bg-card p-4 shadow-card sm:hidden">
-          <SelectedIssueBadge issue={selectedIssue} />
-        </section>
-
-        <section aria-label="錯誤導覽" className="rounded-[2rem] border border-border bg-card p-3 shadow-card">
-          <div data-testid="issue-navigator" className="grid gap-2 sm:flex sm:overflow-x-auto sm:hide-scrollbar">
-            {DEMO_RECOGNITION_ISSUES.map((issue, index) => {
-              const isActive = issue.id === selectedIssueId;
+          <div data-testid="recognized-beat-list" className="space-y-2">
+            {beats.map((recognizedBeat) => {
+              const isSelected = recognizedBeat.id === selectedBeat?.id;
+              const hasLowConfidenceNote = recognizedBeat.notes.some((note) => note.confidence < 0.8);
 
               return (
                 <button
-                  key={issue.id}
+                  key={recognizedBeat.id}
                   type="button"
-                  onClick={() => setSelectedIssueId(issue.id)}
-                  aria-pressed={isActive}
-                  className={cn(
-                    'w-full rounded-[1.25rem] border px-4 py-3 text-left transition-all sm:min-w-[13.5rem] sm:w-auto',
-                    isActive ? 'border-primary/30 bg-primary/5 shadow-soft' : 'border-border bg-background'
-                  )}
+                  onClick={() => setSelectedBeatId(recognizedBeat.id)}
+                  aria-pressed={isSelected}
+                  aria-label={`第 ${recognizedBeat.measure} 小節第 ${recognizedBeat.beat} 拍辨識音符`}
+                  className={`w-full rounded-2xl border p-3 text-left transition-colors ${
+                    isSelected ? "border-primary bg-primary/5" : "border-border bg-background"
+                  }`}
                 >
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="flex items-center gap-2">
-                        <span className={cn('rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em]', issue.accent)}>
-                          {index + 1}
-                        </span>
-                        <p className="text-sm font-medium leading-snug">{issue.title}</p>
-                      </div>
-                      <p className="mt-1 text-xs text-muted-foreground">{issue.measureLabel}</p>
+                      <p className="text-sm font-semibold">
+                        第 {recognizedBeat.measure} 小節・第 {recognizedBeat.beat} 拍
+                      </p>
+                      <p className="mt-0.5 text-[11px] text-muted-foreground">
+                        辨識信心度 {Math.round(recognizedBeat.confidence * 100)}%
+                      </p>
                     </div>
-                    <div className="mt-0.5 shrink-0">
-                      <div className={cn('h-2.5 w-2.5 rounded-full', isActive ? 'bg-primary' : 'bg-muted-foreground/25')} />
-                    </div>
+                    {hasLowConfidenceNote ? (
+                      <span className="flex items-center gap-1 rounded-full bg-amber-100 px-2 py-1 text-[11px] font-medium text-amber-800">
+                        <AlertTriangle size={12} /> 請核對
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-1 text-[11px] font-medium text-emerald-700">
+                        <CheckCircle2 size={13} /> 清楚
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                    {VOICE_ORDER.map((voice) => {
+                      const voiceNotes = recognizedBeat.notes.filter((item) => item.voice === voice);
+                      const hasLowConfidence = voiceNotes.some((note) => note.confidence < 0.8);
+                      const hasMultipleNotes = voiceNotes.length > 1;
+
+                      return (
+                        <div
+                          key={voice}
+                          className={`rounded-xl border px-2.5 py-2 ${
+                            hasLowConfidence || hasMultipleNotes
+                              ? "border-amber-200 bg-amber-50"
+                              : "border-border/70 bg-card"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between gap-1">
+                            <span className="text-[10px] font-semibold text-muted-foreground">
+                              {voice} · {VOICE_NAMES[voice]}
+                            </span>
+                            {(hasLowConfidence || hasMultipleNotes) && (
+                              <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                            )}
+                          </div>
+                          <p className="mt-1 text-base font-semibold">
+                            {voiceNotes.length > 0
+                              ? voiceNotes.map((note) => midiToNoteName(note.midi)).join(" / ")
+                              : "—"}
+                          </p>
+                          <p className="text-[10px] text-muted-foreground">
+                            {hasMultipleNotes
+                              ? `${voiceNotes.length} 個音，請確認聲部`
+                              : voiceNotes[0]
+                                ? `MIDI ${voiceNotes[0].midi}`
+                                : "未辨識"}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </button>
               );
@@ -259,37 +295,29 @@ const B4RecognitionResult = () => {
           </div>
         </section>
 
-        <section data-testid="selected-issue-panel" className="rounded-[2rem] border border-border bg-card p-4 shadow-card">
-          <div className="border-b border-border/70 pb-3">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-primary/68">Issue Detail</p>
-          </div>
-          <div className="pt-3">{renderIssueSummary(selectedIssue)}</div>
+        <section className="rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sky-950">
+          <p className="text-sm font-medium">請確認的是「音符辨識」，不是作答是否正確</p>
+          <p className="mt-1 text-xs leading-relaxed text-sky-900/75">
+            如果音名與譜面一致，選擇開始分析；若 AI 讀錯音高或聲部，再進入手動修正。
+          </p>
         </section>
+      </main>
 
-        <section className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3">
-          <div className="flex items-start gap-3">
-            <AlertTriangle size={16} className="mt-0.5 shrink-0 text-amber-500" />
-            <div>
-              <p className="text-sm font-medium text-amber-900">建議修正順序</p>
-              <p className="mt-1 text-xs leading-relaxed text-amber-800/80">
-                先處理三個嚴重的平行問題，再回頭收斂超過八度的聲部間距。這樣重寫時比較不會一改 spacing 就又引發新的平行。
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <div className="fixed inset-x-0 bottom-16 z-40 border-t border-border bg-background/95 px-4 py-3 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-lg gap-3">
           <button
-            onClick={() => navigate('/grading/work/demo-score-capture')}
-            className="h-11 rounded-xl border border-border bg-card text-sm font-medium shadow-card"
+            type="button"
+            onClick={() => navigate("/grading/correct")}
+            className="h-11 flex-1 rounded-xl border border-border bg-card text-sm font-medium"
           >
-            前往作品詳情
+            辨識有誤，手動修正
           </button>
           <button
-            onClick={() => navigate('/grading/analysis')}
-            className="h-11 rounded-xl bg-primary text-primary-foreground text-sm font-medium shadow-soft"
+            type="button"
+            onClick={() => navigate("/grading/analysis")}
+            className="h-11 flex-[1.2] rounded-xl bg-primary text-sm font-medium text-primary-foreground shadow-soft"
           >
-            繼續完整分析
+            音符正確，開始分析
           </button>
         </div>
       </div>

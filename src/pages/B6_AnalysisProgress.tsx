@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Loader2, AlertCircle, CheckCircle, RotateCw } from 'lucide-react';
+import { countManualCorrections, readManualCorrections } from '@/lib/manual-correction';
 
 const steps = [
   { label: '譜面辨識', desc: '解析手寫譜面的音符與記號…' },
@@ -14,6 +15,7 @@ const B6AnalysisProgress = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [failed, setFailed] = useState(false);
+  const [correctedCount] = useState(() => countManualCorrections(readManualCorrections()));
 
   useEffect(() => {
     if (failed) return;
@@ -64,11 +66,16 @@ const B6AnalysisProgress = () => {
 
         {/* Title */}
         <div className="text-center">
+          {correctedCount > 0 && (
+            <p className="mb-2 inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+              已套用 {correctedCount} 項手動校正
+            </p>
+          )}
           <h2 className="text-lg font-display font-semibold mb-1">
             {failed ? '分析失敗' : '正在分析'}
           </h2>
           <p className="text-sm text-muted-foreground">
-            {failed ? '處理過程中發生錯誤，請重試' : '正在為你的四部合聲作業進行和聲分析'}
+            {failed ? '處理過程中發生錯誤，請重試' : '正在為你的四部和聲作業進行和聲分析'}
           </p>
         </div>
 

@@ -54,11 +54,16 @@ type AppScreen = 'splash' | 'onboarding' | 'login' | 'permissions' | 'main';
 
 const App = () => {
   const [screen, setScreen] = useState<AppScreen>(() => {
-    return (localStorage.getItem('hepai_onboarded') === 'true') ? 'main' : 'splash';
+    const demoMode = new URLSearchParams(window.location.search).get('demo') === '1';
+    const onboarded = typeof window.localStorage?.getItem === 'function'
+      && window.localStorage.getItem('hepai_onboarded') === 'true';
+    return (demoMode || onboarded) ? 'main' : 'splash';
   });
 
   const goMain = () => {
-    localStorage.setItem('hepai_onboarded', 'true');
+    if (typeof window.localStorage?.setItem === 'function') {
+      window.localStorage.setItem('hepai_onboarded', 'true');
+    }
     setScreen('main');
   };
 
