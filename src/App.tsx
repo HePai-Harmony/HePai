@@ -77,7 +77,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
-          <BrowserRouter>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
             <div className="max-w-lg mx-auto min-h-screen bg-background relative">
               <Routes>
                 <Route path="/" element={<B1GradingHome />} />

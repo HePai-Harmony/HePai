@@ -34,8 +34,8 @@ export interface RecognitionIssue {
 
 const DEMO_STORAGE_KEY = "hepai_demo_recent_works";
 
-export const DEMO_CAPTURE_IMAGE = "/score-original.png";
-export const DEMO_REVIEW_IMAGE = "/score-teacher-marked.png";
+export const DEMO_CAPTURE_IMAGE = `${import.meta.env.BASE_URL}score-original.png`;
+export const DEMO_REVIEW_IMAGE = `${import.meta.env.BASE_URL}score-teacher-marked.png`;
 export const DEMO_WORK_ID = "demo-score-capture";
 
 export const DEMO_RECOGNITION_ISSUES: RecognitionIssue[] = [

@@ -61,7 +61,7 @@ export const examPapers: ExamPaper[] = sourcePapers.map((paper) => ({
     paperDisplayName: paper.displayName,
     questionNumber: index + 1,
     groupName: getGroupName(paper, question.group),
-    imageUrl: question.image ? `/question-bank-assets/${question.image}` : null,
+    imageUrl: question.image ? `${import.meta.env.BASE_URL}question-bank-assets/${question.image}` : null,
   })),
 }));
 
